@@ -1,0 +1,36 @@
+FROM ubuntu:latest
+
+EXPOSE 53
+EXPOSE 10000
+
+# Instal·lem diferents programes necessaris per al contenidor
+RUN apt update -y && apt install -y bind9 && apt install -y wget && apt install -y gnupg1 && apt install curl -y && apt install systemctl -y && apt install gpg -y
+
+#RUN curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh && sh setup-repos.sh
+# Instal·lem claus del repository de webmin
+RUN wget -q -O- http://www.webmin.com/jcameron-key.asc | apt-key add -
+#RUN curl -fsSL https://download.webmin.com/jcameron-key.asc | gpg --dearmor -o /usr/share/keyrings/webmin.gpg
+
+# Seguim instruccións de webmin
+RUN echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list
+
+# actualitzem el sistema
+RUN apt update 
+
+# Instal·lem el webmin 
+RUN apt install webmin -y
+
+# Instal·lem diferents eines per a modificar
+RUN apt install nano -y
+
+# Afegim un usuari per a logejarnos en webmin
+#RUN useradd pepe -p pepe -G sudo -m
+
+# Habilitem i exposem ports 
+RUN systemctl enable bind9
+
+
+# Iniciem els serveis necesaris per a la execució de webmin i bind9
+ENTRYPOINT systemctl start webmin && systemctl start bind9 && bash
+
+#docker run -it -p 53:53 -p 10000:10000 -v etc-bind:/etc/bind/ -v var-cache-bind:/varc/cache/bind/ dns_server /bin/bash

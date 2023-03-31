@@ -28,7 +28,6 @@ public class Utils {
             }
             input.nextLine();
         }
-        input.close();
         return nombre;
     }
 
@@ -40,9 +39,6 @@ public class Utils {
     public static String llegirString(String message){
         Scanner input = new Scanner(System.in);
         System.out.println(message);
-        input.close();
         return input.nextLine();
-        
     }
-
 }
