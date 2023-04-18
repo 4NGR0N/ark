@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "try_catch_2",
+            "request": "launch",
+            "mainClass": "try_catch_2",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "try_catch",
+            "request": "launch",
+            "mainClass": "try_catch",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "try_catch_1",
+            "request": "launch",
+            "mainClass": "try_catch_1",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "PracticaClasseCorregit",
+            "request": "launch",
+            "mainClass": "PracticaClasseCorregit",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "_16_exercici_4_Strings__11_01_2022",
+            "request": "launch",
+            "mainClass": "_16_exercici_4_Strings__11_01_2022",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "JugadorsAppModular",
+            "request": "launch",
+            "mainClass": "JugadorsAppModular",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
