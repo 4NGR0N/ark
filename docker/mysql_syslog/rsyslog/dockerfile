@@ -1,0 +1,21 @@
+FROM ubuntu:latest
+
+# Install rsyslog
+RUN apt-get update && \
+    apt-get install -y systemctl && \
+    apt-get install -y rsyslog
+
+# Create a directory for rsyslog logs
+RUN mkdir -p /var/log/rsyslog
+
+# Create a configuration file for rsyslog
+RUN echo "local0.* /var/log/rsyslog/app.log" >> /etc/rsyslog.conf
+
+# Create a volume for the app logs
+VOLUME /var/log/app
+
+# Expose the rsyslog port
+EXPOSE 514/tcp
+
+# Start rsyslog
+CMD /usr/sbin/rsyslogd -n && sh

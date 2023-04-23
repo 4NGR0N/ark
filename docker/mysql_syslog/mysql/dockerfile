@@ -1,0 +1,13 @@
+FROM ubuntu:latest
+
+ENV MYSQL_ROOT_PASSWORD=patxi88
+
+RUN apt-get update && \
+    apt-get install -y mysql-server && \
+    rm -rf /var/lib/apt/lists/*
+
+EXPOSE 3306
+
+CMD mysqld --default-authentication-plugin=mysql_native_password
+
+#docker run -d --network mybbdd --network-alias mysql -v todo-mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=patxi88 mysql-imatge

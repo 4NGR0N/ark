@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  mysql:
+    build:
+      context: ./mysql
+    container_name: mysql_container
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=patxi88
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=patxi88
+    volumes:
+      - mysql_data:/var/lib/mysql
+    expose:
+      - 3306
+      - 33060
+
+  syslog:
+    build:
+      context: ./rsyslog
+    container_name: syslog_container
+    restart: "always"
+    ports:
+      - "514:514"
+    expose:
+      - 514
+
+volumes:
+  mysql_data:
