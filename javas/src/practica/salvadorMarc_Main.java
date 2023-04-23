@@ -6,30 +6,49 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class salvadorMarc_Main {
-    public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
     public static final String ANSI_RESET = "\u001B[0m";
-
     public static void main(String[] args) throws FileNotFoundException {
-        ArrayList<salvadorMarc_Character> llista_personatges = new ArrayList<salvadorMarc_Character>();
+        
+        //Es convenientment necessari un block try/catch per capturar el FileNotFoundExcepcion en cas d'error
+        try {
+            
+            //Creem les variables necessaries:
+            //llista personatges es un arraylist de objectes tipus salvadorMarc_Character
+            ArrayList<salvadorMarc_Character> llista_personatges = new ArrayList<salvadorMarc_Character>();
+            
+            //creem les variables f i arxiu per posar al buffer la ubicació e inicialitzar l'objecte 'File'
+            File ruta = new File("G:/github/ark/javas/src/practica");
+            File arxiu = new File(ruta,"characters_wh_semicolon.csv");
+            
+            //creem el punter de lectura
+            Scanner input = new Scanner(arxiu);
 
-        File f = new File("G:/github/ark/javas/src/practica");
-        File arxiu = new File(f,"characters_wh_semicolon.csv");
-        Scanner input = new Scanner(arxiu);
-        input.nextLine();
-        while(input.hasNextLine()){
-            String linia = input.nextLine();
-            String[] valors = linia.split(";");
-            salvadorMarc_Character cromo = new salvadorMarc_Character(valors[0],valors[1], valors[2], valors[3], valors[4], valors[5], valors[6], valors[7], valors[8], valors[9]);
-            llista_personatges.add(cromo);
-            System.out.println("Name:"+valors[0]+" Height:"+valors[1]+" Mass:"+valors[2]+" Hair Color:"+valors[3]+" Skin Color:"+valors[4]+" Eye Color:"+valors[5]+" Birth Year:"+valors[6]+" Gender:"+valors[7]+" Homewrold:"+valors[8]+" Species:"+valors[9]);
+            //Com que la primera linia del arxiu és una capçalera, adelantem el punter una linia.
+            input.nextLine();
+
+            //Llegim el contingut del arxiu, passem cadascuna de les linies a un objecte de tipus "salvadorMarc_Character" i
+            //l'afegim a l'arraylist
+            while(input.hasNextLine()){
+                String linia = input.nextLine();
+                String[] valors = linia.split(";");
+                salvadorMarc_Character cromo = new salvadorMarc_Character(valors[0],valors[1], valors[2], valors[3], valors[4], valors[5], valors[6], valors[7], valors[8], valors[9]);
+                llista_personatges.add(cromo);          
+            }
+
+            //Treiem el contingut del arraylist per pantalla:
+            for (int i = 0; i < llista_personatges.size(); i++) {
+                salvadorMarc_Character personaje = llista_personatges.get(i);
+                personaje.enPantalla();
+            }
+            input.close();
+        } 
+
+        //En cas d'error de lectura al no trobar l'arxiu, o tenint un error de lectura, avisem al usuari:
+        catch (FileNotFoundException e) {
+            System.out.println(ANSI_RED+"No es pot accedir a l'arxiu. Comprova si existeix i si hi tens permisos."+ANSI_RESET);
+
         }
-        input.close();
-    }    
+    }   
+    
 }
