@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import practica.models.salvadorMarc_Character;
+
 public class salvadorMarc_Main {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
@@ -17,7 +19,7 @@ public class salvadorMarc_Main {
             //llista personatges es un arraylist de objectes tipus salvadorMarc_Character
             ArrayList<salvadorMarc_Character> llista_personatges = new ArrayList<salvadorMarc_Character>();
             
-            //creem les variables f i arxiu per posar al buffer la ubicació e inicialitzar l'objecte 'File'
+            //creem la variable arxiu per posar al buffer la ubicació e inicialitzar l'objecte 'File'
             File arxiu = new File("characters_wh_semicolon.csv");
             
             //creem el punter de lectura
