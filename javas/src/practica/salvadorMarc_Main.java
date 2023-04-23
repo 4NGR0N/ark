@@ -18,8 +18,7 @@ public class salvadorMarc_Main {
             ArrayList<salvadorMarc_Character> llista_personatges = new ArrayList<salvadorMarc_Character>();
             
             //creem les variables f i arxiu per posar al buffer la ubicació e inicialitzar l'objecte 'File'
-            File ruta = new File("G:/github/ark/javas/src/practica");
-            File arxiu = new File(ruta,"characters_wh_semicolon.csv");
+            File arxiu = new File("characters_wh_semicolon.csv");
             
             //creem el punter de lectura
             Scanner input = new Scanner(arxiu);
