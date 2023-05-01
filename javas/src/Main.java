@@ -276,4 +276,7 @@ public class Main {
             System.out.println(String.format("%1$15s%2$15s%3$15s%4$15s%5$15s%6$15s", Alumne.getNom(),Alumne.getCognom1(),Alumne.getCognom2(),Alumne.getNotes()[0],Alumne.getNotes()[1],Alumne.getNotes()[2]));
         }
     }
+
+    public void inicio() {
+    }
 }
