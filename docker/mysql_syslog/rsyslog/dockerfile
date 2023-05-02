@@ -3,13 +3,14 @@ FROM ubuntu:latest
 # Install rsyslog
 RUN apt-get update && \
     apt-get install -y systemctl && \
-    apt-get install -y rsyslog
+    apt-get install -y rsyslog && \
+    apt-get install -y tree
 
 # Create a directory for rsyslog logs
 RUN mkdir -p /var/log/rsyslog
 
 # Create a configuration file for rsyslog
-RUN echo "local0.* /var/log/rsyslog/app.log" >> /etc/rsyslog.conf
+RUN echo "*.* /var/log/rsyslog/serveis.log" >> /etc/rsyslog.conf
 
 # Create a volume for the app logs
 VOLUME /var/log/app

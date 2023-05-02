@@ -13,7 +13,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=patxi88
     volumes:
-      - mysql_data:/var/lib/mysql
+      - shared-data:/app/data
     expose:
       - 3306
       - 33060
@@ -25,8 +25,10 @@ services:
     restart: "always"
     ports:
       - "514:514"
+    volumes:
+      - shared-data:/app/data
     expose:
       - 514
 
 volumes:
-  mysql_data:
+  shared-data:
