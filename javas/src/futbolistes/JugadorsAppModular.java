@@ -1,5 +1,4 @@
-
-
+import Jugador;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,16 +12,23 @@ public class JugadorsAppModular {
     static String[] header = {"NOM", "CLUB", "DORSAL", "GOLS"};
 
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException, IOException {
-        ArrayList<Jugador> jugadors = new ArrayList<>();
-        jugadors.add(new Jugador("Leo Messi", "FCB", 10, 30));
-        jugadors.add(new Jugador("Benzema", "RMFC", 9, 29));
-        jugadors.add(new Jugador("Luis Suarez", "AT Madrid", 9, 25));
-        jugadors.add(new Jugador("Neymar", "PSG", 11, 35)); 
+        try {
+            ArrayList<Jugador> jugadors = new ArrayList<>();
+            jugadors.add(new Jugador("Leo Messi", "FCB", 10, 30));
+            jugadors.add(new Jugador("Benzema", "RMFC", 9, 29));
+            jugadors.add(new Jugador("Luis Suarez", "AT Madrid", 9, 25));
+            jugadors.add(new Jugador("Neymar", "PSG", 11, 35)); 
+            
+            WriteObjectToFile(jugadors,"jugadors.dat");
+            ArrayList<Jugador> llistat = ReadObjectFromFile("jugadors.dat"); 
+            System.out.println(llistat); 
+            //menuPrincipal(jugadors);
+        } catch (IOException e) {
+            System.out.println("Error de entrada/sortida");
+        } catch (ClassFormatError e){
+            System.out.println("Classe no trobada");
+        }
         
-        WriteObjectToFile(jugadors,"jugadors.dat");
-        ArrayList<Jugador> llistat = ReadObjectFromFile("jugadors.dat"); 
-        System.out.println(llistat); 
-        //menuPrincipal(jugadors);
     }
 
     private static void menuPrincipal(ArrayList<Jugador> jugadors) throws InterruptedException {
@@ -62,7 +68,8 @@ public class JugadorsAppModular {
         try {
             FileInputStream fileStream = new FileInputStream(FILENAME);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            llista = (ArrayList<Jugador>) objectStream.readObject();
+            ArrayList<Jugador> readObject = (ArrayList<Jugador>) objectStream.readObject();
+            llista = readObject;
             
             System.out.println(llista);
 
