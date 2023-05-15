@@ -10,7 +10,7 @@ import practica.models.salvadorMarc_Character;
 public class salvadorMarc_Main {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException{
         
         //Es convenientment necessari un block try/catch per capturar el FileNotFoundExcepcion en cas d'error
         try {
@@ -47,7 +47,7 @@ public class salvadorMarc_Main {
 
         //En cas d'error de lectura al no trobar l'arxiu, o tenint un error de lectura, avisem al usuari:
         catch (FileNotFoundException e) {
-            System.out.println(ANSI_RED+"No es pot accedir a l'arxiu. Comprova si existeix i si hi tens permisos."+ANSI_RESET);
+            System.out.println(ANSI_RED+"No es pot accedir a l'arxiu. Comprova si existeix i/o si hi tens permisos."+ANSI_RESET);
 
         }
     }   

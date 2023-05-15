@@ -1,3 +1,5 @@
+package concesionario;
+
 import java.util.Scanner;
 
 import concesionario.Car;
@@ -59,7 +61,7 @@ public class Main {
             FileInputStream fileIn = new FileInputStream(FILENAME);
             ObjectInputStream input= new ObjectInputStream(fileIn);
             while (true) {
-                Car coche = input.readObject();
+                Car coche = (Car) input.readObject();
                System.out.println( coche.toString());
             }
            
@@ -67,6 +69,8 @@ public class Main {
             System.out.println("Error de entrada/salida.");
         }catch (ClassNotFoundException e){
             System.out.println("Coche no encontrado.");
+        }finally{
+            
         }
         
     }
