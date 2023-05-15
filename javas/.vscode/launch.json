@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "JugadorsAppModular",
+            "request": "launch",
+            "mainClass": "futbolistes.JugadorsAppModular",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
             "name": "try_catch_2",
             "request": "launch",
             "mainClass": "try_catch_2",
