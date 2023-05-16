@@ -60,6 +60,8 @@ public class Main {
             System.out.println("Error de entrada/salida.");
         }catch (ClassNotFoundException e){
             System.out.println("Coche no encontrado.");
+        }finally{
+            
         }
         
     }
