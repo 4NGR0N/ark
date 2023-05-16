@@ -1,17 +1,18 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class Filedemoescriptura {
+public class FileDemoEscriptura {
     public static void main(String[] args) {
         File arxiu;
         int opcio;
 
         do {
-            System.out.printf("Benvingut/da al programa de lectura i escriptura de fitxers de text");
-            System.out.println("Escull una de les opcions següents: "
-                    + "\n 1- Llegir arxiu per pantalla"
-                    + "\n 2- Escriure al fitxer"
-                    + "\n 3- Sortir");
+            System.out.print("Benvingut/da al programa de lectura i escriptura de fitxers de text");
+            System.out.println("""
+                    Escull una de les opcions següents:\s
+                     1- Llegir arxiu per pantalla
+                     2- Escriure al fitxer
+                     3- Sortir""");
 
             opcio = llegirInt();
             switch (opcio) {

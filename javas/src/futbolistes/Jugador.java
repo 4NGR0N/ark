@@ -1,8 +1,9 @@
 package futbolistes;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Jugador {
+public class Jugador implements Serializable {
     private String nom;
     private String club;
     private int dorsal;

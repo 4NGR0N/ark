@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "concesionario.Main",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "FileDemoEscriptura",
+            "request": "launch",
+            "mainClass": "FileDemoEscriptura",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "creaFitxer",
+            "request": "launch",
+            "mainClass": "creaFitxer",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "FitxerDirectoris",
+            "request": "launch",
+            "mainClass": "FitxerDirectoris",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
+            "name": "ObtenirRuta",
+            "request": "launch",
+            "mainClass": "ObtenirRuta",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
             "name": "JugadorsAppModular",
             "request": "launch",
             "mainClass": "futbolistes.JugadorsAppModular",
