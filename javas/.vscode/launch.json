@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Examen",
+            "request": "launch",
+            "mainClass": "m3.Examen",
+            "projectName": "javas_82a6cb4e"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "concesionario.Main",
