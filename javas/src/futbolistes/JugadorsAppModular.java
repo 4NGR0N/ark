@@ -15,15 +15,10 @@ public class JugadorsAppModular {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException, IOException {
         try {
             ArrayList<Jugador> jugadors = new ArrayList<>();
-            jugadors.add(new Jugador("Leo Messi", "FCB", 10, 30));
-            jugadors.add(new Jugador("Benzema", "RMFC", 9, 29));
-            jugadors.add(new Jugador("Luis Suarez", "AT Madrid", 9, 25));
-            jugadors.add(new Jugador("Neymar", "PSG", 11, 35)); 
+
+            jugadors = ReadObjectFromFile("jugadors.dat"); 
+            menuPrincipal(jugadors);
             
-            WriteObjectToFile(jugadors,"jugadors.dat");
-            ArrayList<Jugador> llistat = ReadObjectFromFile("jugadors.dat"); 
-            System.out.println(llistat); 
-            //menuPrincipal(jugadors);
         } catch (IOException e) {
             System.out.println("Error de entrada/sortida");
         } catch (ClassFormatError e){
@@ -56,8 +51,11 @@ public class JugadorsAppModular {
                 menuPrincipal(jugadors);
                 break;
             case 5: //sortir
+                System.out.println("Guardant dades...");
+                WriteObjectToFile(jugadors,"jugadors.dat");
                 Thread.sleep(1000);
                 System.out.println("bye bye");
+
                 break;
             default:
                 break;
@@ -71,15 +69,13 @@ public class JugadorsAppModular {
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
             ArrayList<Jugador> readObject = (ArrayList<Jugador>) objectStream.readObject();
             llista = readObject;
-            
-            System.out.println(llista);
-
             objectStream.close();
             fileStream.close();
+            System.out.println("Lectura de: "+FILENAME+" complerta.");
             return llista;
             
         } catch (IOException e) {
-            System.out.println("Error de entrada/salida.");
+            System.out.println("Error de entrada/sortida.");
         }catch (ClassNotFoundException e){
             System.out.println("Jugador no trobat.");
         }
@@ -94,7 +90,7 @@ public class JugadorsAppModular {
             objectStream.writeObject(llista);
             objectStream.close();
             fileStream.close();
-            System.out.println("Done by copying...");
+            System.out.println("Escriptura de: "+FILENAME+" complerta.");
         } catch (IOException e) {
             System.out.println("Error de entrada/sortida: " + e.getMessage());
         }
@@ -155,7 +151,7 @@ public class JugadorsAppModular {
     }
 
     private static void cercaPerDorsal(ArrayList<Jugador> jugadors) {
-        int dorsal = llegirInt("Escriu el CLUB a cercar:", 0, 99);
+        int dorsal = llegirInt("Escriu el DORSAL a cercar:", 0, 99);
         for (int i = 0; i < header.length; i++) {
             System.out.print(String.format("%1$15s", header[i]));
         }
@@ -196,7 +192,7 @@ public class JugadorsAppModular {
     /**
      * Mostra tots els jugadors per consola
      *
-     * @param jugadors ArrayList de jugadors a mostrarors
+     * @param jugadors ArrayList de jugadors a mostrar
      */
     private static void mostrarJugadors(ArrayList<Jugador> jugadors) {
         for (int i = 0; i < header.length; i++) {
@@ -206,6 +202,8 @@ public class JugadorsAppModular {
         for (Jugador jugador : jugadors) {
             System.out.println(jugador);
         }
+        System.out.println();
+        System.out.println();
     }
 
     /**
