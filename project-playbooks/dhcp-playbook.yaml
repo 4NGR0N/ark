@@ -1,0 +1,25 @@
+---
+- name: Install and configure DHCP service on Ubuntu
+  hosts: your_dhcp_servers
+  become: true
+  vars:
+    dhcp_config_files_path: "/path/to/dhcp_config_files"
+
+  tasks:
+    - name: Copy DHCP configuration files
+      copy:
+        src: "{{ dhcp_config_files_path }}"
+        dest: "/etc/dhcp/"
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Install DHCP server package
+      apt:
+        name: isc-dhcp-server
+        state: present
+
+    - name: Start DHCP service
+      service:
+        name: isc-dhcp-server
+        state: started

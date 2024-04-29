@@ -1,0 +1,26 @@
+---
+- name: Install Nagios XI on Ubuntu
+  hosts: your_nagios_servers
+  become: true
+  vars:
+    nagios_xi_installer_path: "/path/to/nagiosxi_installer.sh"
+
+  tasks:
+    - name: Copy Nagios XI installer
+      copy:
+        src: "{{ nagios_xi_installer_path }}"
+        dest: "/tmp/nagiosxi_installer.sh"
+        mode: 0755
+
+    - name: Run Nagios XI installer
+      shell: "/tmp/nagiosxi_installer.sh -n"
+
+    - name: Start Nagios XI services
+      service:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - nagios
+        - ndo2db
+        - npcd
+        - nagiosxi
