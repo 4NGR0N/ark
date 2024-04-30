@@ -1,26 +1,47 @@
 ---
-- name: Install Nagios XI on Ubuntu
-  hosts: your_nagios_servers
-  become: true
-  vars:
-    nagios_xi_installer_path: "/path/to/nagiosxi_installer.sh"
-
+- hosts: localhost
+  become: yes
   tasks:
-    - name: Copy Nagios XI installer
-      copy:
-        src: "{{ nagios_xi_installer_path }}"
-        dest: "/tmp/nagiosxi_installer.sh"
-        mode: 0755
+    - name: Update apt package index
+      apt:
+        update_cache: yes
 
-    - name: Run Nagios XI installer
-      shell: "/tmp/nagiosxi_installer.sh -n"
+    - name: Install required packages
+      apt:
+        name: 
+          - apache2
+          - php
+          - php-cli
+          - php-gd
+          - php-curl
+          - php-mysql
+          - libapache2-mod-php
+          - libapache2-mod-php8.0
+          - mysql-server
+          - mysql-client
+          - php-pear
+          - php-xml
+        state: present
+        update_cache: yes
+
+    - name: Download Nagios XI
+      get_url:
+        url: https://assets.nagios.com/downloads/nagiosxi/xi-latest.tar.gz
+        dest: /tmp/nagiosxi.tar.gz
+
+    - name: Extract Nagios XI
+      shell: tar xzf /tmp/nagiosxi.tar.gz -C /tmp/
+
+    - name: Install Nagios XI
+      shell: /tmp/nagiosxi/install.sh
+      args:
+        stdin: 'y
+        yes
+        /usr/local/nagios'
 
     - name: Start Nagios XI services
-      service:
-        name: "{{ item }}"
-        state: started
-      loop:
-        - nagios
-        - ndo2db
-        - npcd
-        - nagiosxi
+      shell: service nagios start
+
+    - name: Open Nagios XI in browser
+      debug:
+        msg: "Access Nagios XI at http://{{ ansible_host }}"

@@ -1,12 +1,8 @@
 ---
-- name: Install and configure MySQL
-  hosts: mysql-node
-  become: true
-  vars:
-    mysql_root_password: "risso"
-
+- hosts: localhost
+  become: yes
   tasks:
-    - name: Update apt cache
+    - name: Update apt package index
       apt:
         update_cache: yes
 
@@ -15,21 +11,24 @@
         name: mysql-server
         state: present
 
-    - name: Secure MySQL installation
-      expect:
-        command: mysql_secure_installation
-        responses:
-          'Enter password for user "root":': "{{ mysql_root_password }}"
-          'Press y|Y for Yes, any other key for No:': "y"
-          'New password:': "{{ mysql_root_password }}"
-          'Re-enter new password:': "{{ mysql_root_password }}"
-          'Change the password for root ? ((Press y|Y for Yes, any other key for No) :': "n"
-          'Remove anonymous users? (Press y|Y for Yes, any other key for No) :': "y"
-          'Disallow root login remotely? (Press y|Y for Yes, any other key for No) :': "y"
-          'Remove test database and access to it? (Press y|Y for Yes, any other key for No) :': "y"
-          'Reload privilege tables now? (Press y|Y for Yes, any other key for No) :': "y"
+    - name: Set root password for MySQL
+      debconf:
+        name: 'mysql-server'
+        question: 'mysql-server/root_password'
+        vtype: 'password'
+        value: 'myStrongPassword'
+        state: 'present'
 
-    - name: Restart MySQL service
+    - name: Confirm root password for MySQL
+      debconf:
+        name: 'mysql-server'
+        question: 'mysql-server/root_password_again'
+        vtype: 'password'
+        value: 'myStrongPassword'
+        state: 'present'
+
+    - name: Ensure MySQL service is running and enabled
       service:
         name: mysql
-        state: restarted
+        state: started
+        enabled: yes

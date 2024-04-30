@@ -1,0 +1,26 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    - name: Install Apache2 and PHP
+      apt:
+        name: 
+          - apache2
+          - php
+          - libapache2-mod-php
+        state: present
+
+    - name: Deploy custom web page
+      copy:
+        content: "<html><head><title>Welcome to my custom page</title></head><body><h1>Hello, this is my custom page!</h1></body></html>"
+        dest: /var/www/html/index.php
+
+    - name: Ensure Apache2 service is running and enabled
+      service:
+        name: apache2
+        state: started
+        enabled: yes
