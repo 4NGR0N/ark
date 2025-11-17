@@ -1,0 +1,19 @@
+# Fdb version 4
+["pdflatex"] 1761098965.83031 "/home/risso/Documentos/git/ark/ark/latex/helloworld.tex" "helloworld.pdf" "helloworld" 1761098966.15118 0
+  "/etc/texmf/web2c/texmf.cnf" 1759956034.53597 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/risso/Documentos/git/ark/ark/latex/helloworld.tex" 1761096668.93959 145 1617619f85899d5f7fc61f58553f2489 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1738182759 20144 63d8bacaf52e5abf4db3bc322373e1d4 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1738182759 8448 5cf247d4bd0c7d5d711bbbdf111fae2e ""
+  "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1716410060 29785 9f93ab201fe5dd053afcc6c1bcf7d266 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1761098696 5467255 9a64d1b40e0b893fc5588ecce9d8accf ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1761098748 3348868 c7a32b827c5260f179bcac3480b86fc0 ""
+  "helloworld.aux" 1761098966.11264 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "helloworld.tex" 1761096668.93959 145 1617619f85899d5f7fc61f58553f2489 ""
+  (generated)
+  "helloworld.aux"
+  "helloworld.log"
+  "helloworld.pdf"
+  (rewritten before read)
