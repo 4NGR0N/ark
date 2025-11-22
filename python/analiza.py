@@ -5,6 +5,7 @@ import sys
 import socket
 import threading
 
+
 #captura de flags del script
 ipInicial=sys.argv[1]
 ipFinal=sys.argv[2]
